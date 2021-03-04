@@ -1,6 +1,9 @@
 // VARIABLES
 const wordList = ["pierre", "feuille", "ciseaux", "puit"];
-
+let wordChoice = getRandomWord();
+let splitWordArray = splitWord();
+let hiddenWord = hideTheWord();
+let userGuess = getUserGuess();
 
 // FUNCTIONS
 
@@ -16,7 +19,16 @@ function splitWord() {
     return splitWordArray;
 };
 
-//Get the letter guessed by user and make sure it's only 1 letter long
+//Turn splitWordArray into an Array of underscore
+function hideTheWord(){
+    let hiddenWord = [];
+    for (i = 0; i < wordChoice.length; i++) {
+        hiddenWord[i] = "_";
+    }
+    return hiddenWord;
+};
+
+//Get the letter guessed by user and make sure it's only 1 letter long and not a number
 function getUserGuess() {
     let userGuess = prompt("Veuillez rentrer une lettre que selon vous se trouve dans le mot à deviner !").toLowerCase();
 
