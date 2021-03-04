@@ -1,9 +1,9 @@
 // VARIABLES
 const wordList = ["pierre", "feuille", "ciseaux", "puit"];
+let userScore = 7;
 let wordChoice = getRandomWord();
 let splitWordArray = splitWord();
 let hiddenWord = hideTheWord();
-let userGuess = getUserGuess();
 
 // FUNCTIONS
 
@@ -38,9 +38,21 @@ function getUserGuess() {
     return userGuess;
 };
 
+// function checkLetterGuess(){
+//     if (splitWordArray.includes(userGuess)) {
+//         alert(`Bien joué, la lettre ${userGuess} fait bien partie du mot caché !`)
+//     }
+//     else{
+//         userScore -= 1;
+//     }
+// }
 
 // GAME CODE
 
 alert("Bienvenue, nous allons maintenant jouer au jeu du Pendu !");
-
-getUserGuess();
+getRandomWord();
+splitWord();
+hideTheWord();
+alert(`le mot caché est ${hiddenWord}`)
+let userGuess = getUserGuess();
+// checkLetterGuess();
