@@ -4,6 +4,7 @@ let userScore = 7;
 let wordChoice = getRandomWord();
 let splitWordArray = splitWord();
 let hiddenWord = hideTheWord();
+let letterFound = 0;
 
 // FUNCTIONS
 
@@ -64,11 +65,20 @@ do {
     for (var i = 0; i < splitWordArray.length; i ++) {
       if (userGuess === splitWordArray[i]){
         hiddenWord[i] = splitWordArray[i]; 
+        letterFound +=1;
       }
     }  
   }
   else {
     userScore -= 1;
+  }
+  if (letterFound === splitWordArray.length){
+      alert(`Félicitation tu as trouvé le mot qui était : ${wordChoice}`);
+      break;
+  }
+  else if (userScore === 0) {
+      alert(`Désolé, tu as fini pendu...\nLe mot était : ${wordChoice}`);
+      break;
   }
 } while (userScore > 0);
 
