@@ -1,5 +1,5 @@
 //----------VARIABLES
-const wordList = ["pierre", "feuille", "ciseaux", "puit"];
+const wordList = ["mural", "coutellerie", "complice", "coffre", "effacer", "frelon", "tissage", "figurines", "collectif", "gauche"];
 let userScore = 7;
 let wordChoice = getRandomWord();
 let splitWordArray = splitWord();
@@ -33,6 +33,13 @@ function hideTheWord(){
 
 //Game function
 function game(){
+    userScore = 7;
+    wordChoice = getRandomWord();
+    splitWordArray = splitWord();
+    hiddenWord = hideTheWord();
+    letterFound = 0;
+    alreadyGuessed = [];
+    userGuess = [];
     do {
         var userGuess = prompt(`Veuillez rentrer une lettre qui selon vous se trouve dans le mot à deviner !
         \nIl vous reste ${userScore} tentatives.\nLes lettres déjà testées sont : ${alreadyGuessed}\n${hiddenWord}`).toLowerCase();
@@ -80,7 +87,7 @@ function menu(){
             game();
         }
         else if (menuInput === "r") {
-            alert(`Règles du jeu`);
+            alert(`Règles du jeu :\nLe but du jeu est simple, vous devez trouver toutes les lettres composant le mot caché.\nAttention, vous n'avez le droit qu'à 7 vies et chaque mauvaise lettre vous enlève une vie !`);
             menu();
         }
         else if (menuInput === "q"){
