@@ -5,6 +5,7 @@ let wordChoice = getRandomWord();
 let splitWordArray = splitWord();
 let hiddenWord = hideTheWord();
 let letterFound = 0;
+let alreadyGuessed = [];
 
 // FUNCTIONS
 
@@ -28,6 +29,11 @@ function hideTheWord(){
     }
     return hiddenWord;
 };
+
+function arrayGuessed(){
+    alreadyGuessed += userGuess + " / ";
+    return alreadyGuessed;
+}
 
 //Get the letter guessed by user and make sure it's only 1 letter long and not a number
 // function getUserGuess() {
@@ -57,9 +63,9 @@ splitWord();
 hideTheWord();
 do {
   var userGuess = prompt(`Veuillez rentrer une lettre qui selon vous se trouve dans le mot à deviner !
-    \nIl vous reste ${userScore} tentatives.\n${hiddenWord}`).toLowerCase();
+    \nIl vous reste ${userScore} tentatives.\nLes lettres déjà testées sont : ${alreadyGuessed}\n${hiddenWord}`).toLowerCase();
   while (userGuess.length !== 1 || isNaN(userGuess) === false) {
-    userGuess = prompt("Attention à ne rentrer qu'une seule lettre !\nSinon c'est de la triche...").toLowerCase();
+    userGuess = prompt("Attention à ne rentrer qu'une seule lettre !\nSinon c'est de la triche...\nLes lettres déjà testées sont : ${alreadyGuessed}").toLowerCase();
   };
   if (splitWordArray.includes(userGuess)) {
     for (var i = 0; i < splitWordArray.length; i ++) {
@@ -72,6 +78,7 @@ do {
   else {
     userScore -= 1;
   }
+  arrayGuessed();
   if (letterFound === splitWordArray.length){
       alert(`Félicitation tu as trouvé le mot qui était : ${wordChoice}`);
       break;
